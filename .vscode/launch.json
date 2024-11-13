@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "args": [
+                "--target_model=phi3",
+                "--n_requests=100",
+                "--n_restarts=20",
+                "--attack",
+                "past"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+} 
