@@ -4,11 +4,11 @@
 
         {
             "name": "Python: Current File",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${file}",
             "args": [
-                "--target_model=phi3",
+                "--target_model=llama3-8b",
                 "--n_requests=100",
                 "--n_restarts=20",
                 "--attack",
