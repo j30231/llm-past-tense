@@ -8,11 +8,17 @@
             "request": "launch",
             "program": "${file}",
             "args": [
-                "--target_model=llama3-8b",
-                "--n_requests=100",
-                "--n_restarts=20",
+                "--target_model=llama3-8b-q2",
+                "--n_requests=1",
+                "--n_restarts=1",
                 "--attack",
-                "past"
+                "present",
+                "--prompt_language",
+                "en",
+                "--prompt_gen_model",
+                "gpt-4o-mini",
+                "--prompt_judge_model",
+                "gpt-4o-mini",
             ],
             "console": "integratedTerminal",
             "justMyCode": true
