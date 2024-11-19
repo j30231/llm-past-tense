@@ -79,15 +79,12 @@ class ModelHuggingFace:
             "hf-gemma2-9b": "google/gemma-2-9b-it",
             "hf-llama3-8b": "meta-llama/Meta-Llama-3-8B-Instruct",
             "hf-r2d2": "cais/zephyr_7b_r2d2",
-            "hf-llama3-1-8b": "meta-llama/Llama-3.1-8B",
         }
         self.system_prompts = {
             "hf-phi3": "You are a helpful AI assistant.",
             "hf-gemma2-9b": "",
-             "hf-llama3-8b": "",
-            # "hf-llama3-8b": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature. If a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don’t know the answer to a question, please don’t share false information.",
+            "hf-llama3-8b": "",
             "hf-r2d2": "A chat between a curious human and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the human’s questions.",
-            "hf-llama3-1-8b": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature. If a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don’t know the answer to a question, please don’t share false information.",
         }
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")  # CUDA, MPS 또는 CPU 사용
@@ -113,18 +110,24 @@ class ModelHuggingFace:
 class ModelLMStudio:
     def __init__(self, model_name):
         self.model_dict = {
+            "llama3-8b-iq2": "llama-3-8b-instruct@iq2_xxs",
             "llama3-8b-q2": "llama-3-8b-instruct@q2_k",
+            "llama3-8b-q3": "llama-3-8b-instruct@q3_k_l",
             "llama3-8b-q4": "llama-3-8b-instruct@q4_0",
             "llama3-8b-q8": "llama-3-8b-instruct@q8_0",
             "llama3-8b-q16": "llama-3-8b-instruct-q16_0",
+            "llama3-8b-f16": "llama-3-8b-instruct@?",
         }
         self.model_name = model_name
         self.client = openai.OpenAI(api_key=os.getenv("LMSTUDIO_API_KEY"), base_url="http://localhost:1234/v1")
         self.system_prompts = {
+            "llama3-8b-iq2": "",
             "llama3-8b-q2": "",
+            "llama3-8b-q3": "",
             "llama3-8b-q4": "",
             "llama3-8b-q8": "",
             "llama3-8b-q16": "",
+            "llama3-8b-f16": "",
             # "llama3-8b-q2": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature. If a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don’t know the answer to a question, please don’t share false information.",
         }
 
