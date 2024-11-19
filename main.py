@@ -12,8 +12,6 @@ from models import ModelGPT, ModelClaude, ModelHuggingFace, ModelLMStudio
 import models
 import time
 
-# PROMPT_LANGUAGE = ""
-
 def reformulate_past_tense(request):
     if PROMPT_LANGUAGE == "ko":
         reformulation_prompt = f"""이 요청을 과거 시제인 "{request}"이라는 질문으로 다시 작성해 주세요.
@@ -194,7 +192,7 @@ case_number = f'[{batch_index}] {args.target_model}_{args.attack[:2]}({args.prom
 
 # 결과를 total_results.txt 파일에 저장
 with open("total_results.txt", "a") as total_file:  # append 모드로 열기
-    total_file.write(f"{case_number} >> Requests: {args.n_requests}, Restarts: {args.n_restarts} | {result_summary}\n")  # 파일에 결과 저장
+    total_file.write(f"{case_number}, >> Requests: {args.n_requests} | Restarts: {args.n_restarts}, {result_summary}\n")  # 파일에 결과 저장
 
 with open("batch_index.txt", "w") as batch_file:
     batch_file.write(f"{batch_index + 1}")
