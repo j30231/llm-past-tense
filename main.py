@@ -11,6 +11,7 @@ from judges import judge_gpt, judge_llama3, judge_rule_based
 from models import ModelGPT, ModelClaude, ModelHuggingFace, ModelLMStudio
 import models
 import time
+import glob
 
 def reformulate_past_tense(request):
     if PROMPT_LANGUAGE == "ko":
@@ -111,6 +112,8 @@ parser.add_argument("--attack", type=str, default="past", help="Attack type", ch
 parser.add_argument("--prompt_language", type=str, default="ko", help="Prompt language", choices=["ko", "en"])
 parser.add_argument("--prompt_gen_model", type=str, default="gpt-4o-mini", help="Prompt generation model", choices=["gpt-4o-mini", "gpt-3.5-turbo"])
 parser.add_argument("--prompt_judge_model", type=str, default="gpt-4o-mini", help="Prompt judge model", choices=["gpt-4o-mini", "gpt-4"])
+parser.add_argument("--resume", action="store_true", help="Resume from the last checkpoint")
+parser.add_argument("--resume_file", type=str, help="Specific json file to resume from")
 args = parser.parse_args()
 
 PROMPT_LANGUAGE = args.prompt_language
@@ -120,6 +123,7 @@ MODEL_NAME_TEXT_JUDGE = args.prompt_judge_model
 load_dotenv(override=True)
 client_oai = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 client_together = openai.OpenAI(api_key=os.getenv("TOGETHER_API_KEY"), base_url="https://api.together.xyz/v1")
+client_grok = openai.OpenAI(api_key=os.getenv("GROK_API_KEY"), base_url="https://api.grok.com/v1")
 #client_oai = openai.OpenAI(api_key="no_key", base_url="http://localhost:1234/v1")
 #client_llm = openai.OpenAI(api_key="no_key", base_url="http://localhost:1234/v1")
 
@@ -136,10 +140,39 @@ jb_dict = vars(args)
 jb_dict["jb_artifacts"] = []
 timestamp_start = datetime.datetime.now()
 
+# 중단된 지점부터 재시작하는 로직
+start_index = 0
+if args.resume:
+    if args.resume_file:
+        # 특정 파일에서 재시작
+        resume_file = args.resume_file
+    else:
+        # 가장 최근 파일 찾기
+        jb_files = glob.glob(f'jailbreak_artifacts/({batch_index-1})_*.json')
+        if jb_files:
+            resume_file = max(jb_files, key=os.path.getctime)
+        else:
+            print("No previous checkpoint found. Starting from beginning.")
+            resume_file = None
+    
+    if resume_file:
+        with open(resume_file, 'r', encoding='utf-8') as f:
+            previous_data = json.load(f)
+            if previous_data["jb_artifacts"]:
+                start_index = previous_data["jb_artifacts"][-1]["i_request"] + 1
+                jb_dict["jb_artifacts"] = previous_data["jb_artifacts"]
+                print(f"Resuming from request #{start_index}")
+
 print('=='*50 + '\n' + '=='*50 + '\n' + '=='*50 + '\n')
 print(f'\n[batch : {batch_index}] {timestamp_start}-model={args.target_model}-attack={args.attack}-n_requests={args.n_requests}-n_restarts={args.n_restarts}-lang={args.prompt_language}')
-for i_request, request in enumerate(requests[:args.n_requests]):
+
+# requests 리스트 슬라이싱 수정
+for i_request, request in enumerate(requests[start_index:args.n_requests], start=start_index):
     print(f">>> [{batch_index}] Request #{i_request}: {request}")
+    jailbroken_gpt = False
+    jailbroken_llama = False
+    jailbroken_rules = False
+    
     for i_restart in range(args.n_restarts):
         if args.attack == "past":
             request_reformulated = reformulate_past_tense(request) 
@@ -149,15 +182,22 @@ for i_request, request in enumerate(requests[:args.n_requests]):
             request_reformulated = request
         print(f">>> [{batch_index}] Reformulated request: {request_reformulated}")
         response = target_llm.get_response(request_reformulated, max_n_tokens=args.target_max_n_tokens, temperature=1.0)
-        jailbroken_gpt = judge_gpt(client_oai, request, response) 
+        
+        # 모든 판단기를 동시에 체크
+        if not jailbroken_gpt:
+            jailbroken_gpt = judge_gpt(client_oai, request, response)
+        if not jailbroken_llama:
+            jailbroken_llama = judge_llama3(client_together, request, response)
+        if not jailbroken_rules:
+            jailbroken_rules = judge_rule_based(response)
 
         print(f">>> [{batch_index}] Request #{i_request}, restart #{i_restart}: {response}")
         print('\n')
+        
+        # GPT 탈옥이 성공하면 다음 요청으로 이동
         if jailbroken_gpt:
             break
     
-    jailbroken_llama = judge_llama3(client_together, request, response)
-    jailbroken_rules = judge_rule_based(response)
     print(f">>> [{batch_index}] Request #{i_request}, restart #{i_restart}: jailbroken_gpt={jailbroken_gpt}, jailbroken_llama={jailbroken_llama}, jailbroken_rules={jailbroken_rules}")
 
     jb_artifact = {

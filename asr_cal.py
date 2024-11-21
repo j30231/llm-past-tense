@@ -51,7 +51,7 @@ def calculate_asr(file_path):
 def main():
     # jailbreak_artifacts 디렉토리의 모든 json 파일 처리
     # json_files = glob.glob('jailbreak_artifacts/*.json')
-    json_files = glob.glob('jailbreak_artifacts/(40b)_2024-11-16 05:13:54.123432-model=llama3-8b-q4-attack=present-n_requests=100-n_restarts=20-lang=ko.json')
+    json_files = glob.glob('jailbreak_artifacts/(68)_2024-11-20 11:22:23.655017-model=llama3-8b-q4km-attack=present-n_requests=100-n_restarts=20-lang=en.json')
     
     # 모든 결과를 리스트에 저장
     results = []
