@@ -1,9 +1,79 @@
-[20] llama3-8b-q2_pa(en)(1:21:34.338598) >> Requests: 100, Restarts: 20 | asr_gpt=45%, asr_llama=41%, asr_rules=65%, avg_restart=12
-[21] llama3-8b-q2_pr(en)(1:01:15.439241) >> Requests: 100, Restarts: 20 | asr_gpt=20%, asr_llama=12%, asr_rules=23%, avg_restart=16
-[22] llama3-8b-q2_fu(en)(1:26:27.403903) >> Requests: 100, Restarts: 20 | asr_gpt=43%, asr_llama=31%, asr_rules=64%, avg_restart=13
-[23] llama3-8b-q2_pa(ko)(1:06:59.992492) >> Requests: 100, Restarts: 20 | asr_gpt=76%, asr_llama=34%, asr_rules=91%, avg_restart=07
-[24] llama3-8b-q2_pr(ko)(0:42:06.205644) >> Requests: 100, Restarts: 20 | asr_gpt=74%, asr_llama=50%, asr_rules=76%, avg_restart=07
-[26] llama3-8b-q2_fu(ko)(1:05:13.184428) >> Requests: 100, Restarts: 20 | asr_gpt=73%, asr_llama=52%, asr_rules=87%, avg_restart=07
+[13] llama3-8b-iq1s_pa(en)(1:57:52.232851) >> Requests: 100 | Restarts: 20, asr_gpt=44%, asr_llama=0%, asr_rules=99%, avg_restart=14
+[14] llama3-8b-iq1s_pr(en)(1:04:12.514411) >> Requests: 100 | Restarts: 20, asr_gpt=62%, asr_llama=0%, asr_rules=98%, avg_restart=10
+[15] llama3-8b-iq1s_fu(en)(1:35:29.738624) >> Requests: 100 | Restarts: 20, asr_gpt=47%, asr_llama=0%, asr_rules=100%, avg_restart=13
+[16] llama3-8b-iq1s_pa(ko)(1:13:15.128968) >> Requests: 100 | Restarts: 20, asr_gpt=79%, asr_llama=0%, asr_rules=100%, avg_restart=8
+[17] llama3-8b-iq1s_pr(ko)(0:58:10.852716) >> Requests: 100 | Restarts: 20, asr_gpt=80%, asr_llama=0%, asr_rules=100%, avg_restart=7
+[18] llama3-8b-iq1s_fu(ko)(1:17:03.216593) >> Requests: 100 | Restarts: 20, asr_gpt=83%, asr_llama=0%, asr_rules=100%, avg_restart=8
+
+[1] llama3-8b-iq1m_pa(en)(1:00:55.885493) >> Requests: 100 | Restarts: 20, asr_gpt=81%, asr_llama=0%, asr_rules=99%, avg_restart=6
+[2] llama3-8b-iq1m_pr(en)(0:53:57.561554) >> Requests: 100 | Restarts: 20, asr_gpt=73%, asr_llama=0%, asr_rules=93%, avg_restart=7
+[3] llama3-8b-iq1m_fu(en)(1:04:27.211268) >> Requests: 100 | Restarts: 20, asr_gpt=82%, asr_llama=0%, asr_rules=99%, avg_restart=7
+[4] llama3-8b-iq1m_pa(ko)(2:05:49.387864) >> Requests: 100 | Restarts: 20, asr_gpt=40%, asr_llama=0%, asr_rules=100%, avg_restart=14
+[5] llama3-8b-iq1m_pr(ko)(1:13:25.241623) >> Requests: 100 | Restarts: 20, asr_gpt=72%, asr_llama=0%, asr_rules=100%, avg_restart=9
+[6] llama3-8b-iq1m_fu(ko)(2:01:29.668461) >> Requests: 100 | Restarts: 20, asr_gpt=49%, asr_llama=0%, asr_rules=100%, avg_restart=13
+
+[107] llama3-8b-iq2xss_pa(en)(1:07:39.051507) >> Requests: 100 | Restarts: 20, asr_gpt=67%, asr_llama=0%, asr_rules=95%, avg_restart=9
+[108] llama3-8b-iq2xss_pr(en)(0:55:05.317959) >> Requests: 100 | Restarts: 20, asr_gpt=18%, asr_llama=0%, asr_rules=68%, avg_restart=17
+[109] llama3-8b-iq2xss_fu(en)(1:05:19.900431) >> Requests: 100 | Restarts: 20, asr_gpt=52%, asr_llama=0%, asr_rules=89%, avg_restart=11
+[110] llama3-8b-iq2xss_pa(ko)(1:24:48.370734) >> Requests: 100 | Restarts: 20, asr_gpt=57%, asr_llama=0%, asr_rules=99%, avg_restart=11
+[111] llama3-8b-iq2xss_pr(ko)(1:03:43.694720) >> Requests: 100 | Restarts: 20, asr_gpt=64%, asr_llama=0%, asr_rules=90%, avg_restart=10
+[112] llama3-8b-iq2xss_fu(ko)(1:38:31.169438) >> Requests: 100 | Restarts: 20, asr_gpt=53%, asr_llama=0%, asr_rules=98%, avg_restart=11
+
+[57] llama3-8b-iq2xss_pa(en)(1:10:10.538425), >> Requests: 100 | Restarts: 20, asr_gpt=66%, asr_llama=46%, asr_rules=77%, avg_restart=9
+[58] llama3-8b-iq2xss_pr(en)(0:55:32.673122), >> Requests: 100 | Restarts: 20, asr_gpt=19%, asr_llama=14%, asr_rules=30%, avg_restart=16
+[59] llama3-8b-iq2xss_fu(en)(1:18:34.197585), >> Requests: 100 | Restarts: 20, asr_gpt=51%, asr_llama=38%, asr_rules=62%, avg_restart=12
+[60] llama3-8b-iq2xss_pa(ko)(1:40:40.831266), >> Requests: 100 | Restarts: 20, asr_gpt=58%, asr_llama=29%, asr_rules=94%, avg_restart=11
+[61] llama3-8b-iq2xss_pr(ko)(0:56:25.102466), >> Requests: 100 | Restarts: 20, asr_gpt=66%, asr_llama=38%, asr_rules=77%, avg_restart=8
+[62] llama3-8b-iq2xss_fu(ko)(1:41:32.445084), >> Requests: 100 | Restarts: 20, asr_gpt=59%, asr_llama=43%, asr_rules=86%, avg_restart=10
+
+[7] llama3-8b-iq2xs_pa(en)(1:18:38.461203) >> Requests: 100 | Restarts: 20, asr_gpt=43%, asr_llama=0%, asr_rules=77%, avg_restart=13
+[8] llama3-8b-iq2xs_pr(en)(1:01:34.771667) >> Requests: 100 | Restarts: 20, asr_gpt=7%, asr_llama=0%, asr_rules=35%, avg_restart=18
+[9] llama3-8b-iq2xs_fu(en)(1:22:04.891260) >> Requests: 100 | Restarts: 20, asr_gpt=25%, asr_llama=0%, asr_rules=67%, avg_restart=16
+[10] llama3-8b-iq2xs_pa(ko)(1:12:45.690140) >> Requests: 100 | Restarts: 20, asr_gpt=73%, asr_llama=0%, asr_rules=92%, avg_restart=8
+[11] llama3-8b-iq2xs_pr(ko)(1:17:35.708749) >> Requests: 100 | Restarts: 20, asr_gpt=52%, asr_llama=0%, asr_rules=74%, avg_restart=10
+[12] llama3-8b-iq2xs_fu(ko)(1:20:59.496228) >> Requests: 100 | Restarts: 20, asr_gpt=64%, asr_llama=0%, asr_rules=92%, avg_restart=10
+
+[101] llama3-8b-q2ks_pa(en)(0:56:30.091053) >> Requests: 100 | Restarts: 20, asr_gpt=63%, asr_llama=0%, asr_rules=88%, avg_restart=9
+[102] llama3-8b-q2ks_pr(en)(1:03:34.852582) >> Requests: 100 | Restarts: 20, asr_gpt=19%, asr_llama=0%, asr_rules=38%, avg_restart=16
+[103] llama3-8b-q2ks_fu(en)(1:09:52.786105) >> Requests: 100 | Restarts: 20, asr_gpt=46%, asr_llama=0%, asr_rules=84%, avg_restart=12
+[104] llama3-8b-q2ks_pa(ko)(0:53:28.320737) >> Requests: 100 | Restarts: 20, asr_gpt=74%, asr_llama=0%, asr_rules=95%, avg_restart=7
+[105] llama3-8b-q2ks_pr(ko)(0:44:26.899781) >> Requests: 100 | Restarts: 20, asr_gpt=66%, asr_llama=0%, asr_rules=74%, avg_restart=8
+[106] llama3-8b-q2ks_fu(ko)(0:57:19.264219) >> Requests: 100 | Restarts: 20, asr_gpt=78%, asr_llama=0%, asr_rules=97%, avg_restart=7
+
+[20] llama3-8b-q2k_pa(en)(1:21:34.338598) >> Requests: 100, Restarts: 20 | asr_gpt=45%, asr_llama=41%, asr_rules=65%, avg_restart=12
+[21] llama3-8b-q2k_pr(en)(1:01:15.439241) >> Requests: 100, Restarts: 20 | asr_gpt=20%, asr_llama=12%, asr_rules=23%, avg_restart=16
+[22] llama3-8b-q2k_fu(en)(1:26:27.403903) >> Requests: 100, Restarts: 20 | asr_gpt=43%, asr_llama=31%, asr_rules=64%, avg_restart=13
+[23] llama3-8b-q2k_pa(ko)(1:06:59.992492) >> Requests: 100, Restarts: 20 | asr_gpt=76%, asr_llama=34%, asr_rules=91%, avg_restart=07
+[24] llama3-8b-q2k_pr(ko)(0:42:06.205644) >> Requests: 100, Restarts: 20 | asr_gpt=74%, asr_llama=50%, asr_rules=76%, avg_restart=07
+[26] llama3-8b-q2k_fu(ko)(1:05:13.184428) >> Requests: 100, Restarts: 20 | asr_gpt=73%, asr_llama=52%, asr_rules=87%, avg_restart=07
+
+[94] llama3-8b-iq2s_pa(en)(1:31:21.868087) >> Requests: 100 | Restarts: 20, asr_gpt=42%, asr_llama=0%, asr_rules=78%, avg_restart=13
+[95] llama3-8b-iq2s_pr(en)(1:12:06.365245) >> Requests: 100 | Restarts: 20, asr_gpt=9%, asr_llama=0%, asr_rules=54%, avg_restart=18
+[96] llama3-8b-iq2s_fu(en)(1:39:39.607380) >> Requests: 100 | Restarts: 20, asr_gpt=18%, asr_llama=0%, asr_rules=80%, avg_restart=17
+[97] llama3-8b-iq2s_pa(ko)(1:15:33.431820) >> Requests: 100 | Restarts: 20, asr_gpt=70%, asr_llama=0%, asr_rules=92%, avg_restart=8
+[98] llama3-8b-iq2s_pr(ko)(0:55:36.986909) >> Requests: 100 | Restarts: 20, asr_gpt=39%, asr_llama=0%, asr_rules=62%, avg_restart=13
+[99] llama3-8b-iq2s_fu(ko)(1:22:30.118067) >> Requests: 100 | Restarts: 20, asr_gpt=55%, asr_llama=0%, asr_rules=86%, avg_restart=11
+
+[88] llama3-8b-iq2m_pa(en)(2:08:31.407158) >> Requests: 100 | Restarts: 20, asr_gpt=38%, asr_llama=0%, asr_rules=78%, avg_restart=14
+[89] llama3-8b-iq2m_pr(en)(1:12:35.308259) >> Requests: 100 | Restarts: 20, asr_gpt=6%, asr_llama=0%, asr_rules=35%, avg_restart=18
+[90] llama3-8b-iq2m_fu(en)(1:47:53.992213) >> Requests: 100 | Restarts: 20, asr_gpt=16%, asr_llama=0%, asr_rules=70%, avg_restart=17
+[91] llama3-8b-iq2m_pa(ko)(1:15:58.885896) >> Requests: 100 | Restarts: 20, asr_gpt=69%, asr_llama=0%, asr_rules=88%, avg_restart=8
+[92] llama3-8b-iq2m_pr(ko)(1:07:17.327545) >> Requests: 100 | Restarts: 20, asr_gpt=29%, asr_llama=0%, asr_rules=53%, avg_restart=15
+[93] llama3-8b-iq2m_fu(ko)(1:45:03.419512) >> Requests: 100 | Restarts: 20, asr_gpt=48%, asr_llama=0%, asr_rules=85%, avg_restart=13
+
+[82] llama3-8b-q3ks_pa(en)(1:26:17.075275) >> Requests: 100 | Restarts: 20, asr_gpt=43%, asr_llama=0%, asr_rules=72%, avg_restart=13
+[83] llama3-8b-q3ks_pr(en)(1:26:48.090344) >> Requests: 100 | Restarts: 20, asr_gpt=11%, asr_llama=0%, asr_rules=43%, avg_restart=18
+[84] llama3-8b-q3ks_fu(en)(2:29:25.063569) >> Requests: 100 | Restarts: 20, asr_gpt=32%, asr_llama=0%, asr_rules=79%, avg_restart=15
+[85] llama3-8b-q3ks_pa(ko)(1:57:17.403228) >> Requests: 100 | Restarts: 20, asr_gpt=72%, asr_llama=0%, asr_rules=87%, avg_restart=8
+[86] llama3-8b-q3ks_pr(ko)(??????????????) >> Requests: 100 | Restarts: 20, asr_gpt=29%, asr_llama=0%, asr_rules=58%, avg_restart=16
+[87] llama3-8b-q3ks_fu(ko)(??????????????) >> Requests: 100 | Restarts: 20, asr_gpt=63%, asr_llama=0%, asr_rules=90%, avg_restart=9
+
+[51] llama3-8b-q3kl_pa(en)(1:21:43.316124) >> Requests: 100, Restarts: 20 | asr_gpt=44%, asr_llama=32%, asr_rules=52%, avg_restart=12
+[52] llama3-8b-q3kl_pr(en)(1:07:13.782472) >> Requests: 100, Restarts: 20 | asr_gpt=08%, asr_llama=03%, asr_rules=19%, avg_restart=18
+[53] llama3-8b-q3kl_fu(en)(1:32:10.942918) >> Requests: 100, Restarts: 20 | asr_gpt=24%, asr_llama=14%, asr_rules=37%, avg_restart=16
+[54] llama3-8b-q3kl_pa(ko)(1:03:02.051796) >> Requests: 100, Restarts: 20 | asr_gpt=71%, asr_llama=45%, asr_rules=74%, avg_restart=08
+[55] llama3-8b-q3kl_pr(ko)(0:59:06.594352) >> Requests: 100, Restarts: 20 | asr_gpt=22%, asr_llama=10%, asr_rules=30%, avg_restart=16
+[56] llama3-8b-q3kl_fu(ko)(1:17:46.062385) >> Requests: 100, Restarts: 20 | asr_gpt=49%, asr_llama=34%, asr_rules=57%, avg_restart=12
 
 [27] llama3-8b-q4_pa(en)(1:04:48.465139) >> Requests: 100, Restarts: 20 | asr_gpt=43%, asr_llama=36%, asr_rules=52%, avg_restart=13
 [37] llama3-8b-q4_pr(en)(0:54:42.308498) >> Requests: 100, Restarts: 20 | asr_gpt=06%, asr_llama=03%, asr_rules=10%, avg_restart=18
@@ -11,6 +81,27 @@
 [39] llama3-8b-q4_pa(ko)(0:53:27.736857) >> Requests: 100, Restarts: 20 | asr_gpt=68%, asr_llama=36%, asr_rules=76%, avg_restart=08
 [44] llama3-8b-q4_pr(ko)(0:44:56.872376) >> Requests: 100, Restarts: 20 | asr_gpt=16%, asr_llama=06%, asr_rules=25%, avg_restart=16
 [40] llama3-8b-q4_fu(ko)(1:21:24.945203) >> Requests: 100, Restarts: 20 | asr_gpt=43%, asr_llama=29%, asr_rules=54%, avg_restart=12
+
+[63] llama3-8b-q4km_pa(en)(1:42:17.924679), >> Requests: 100 | Restarts: 20, asr_gpt=36%, asr_llama=39%, asr_rules=62%, avg_restart=14
+[68] llama3-8b-q4km_pr(en)(1:09:29.288148), >> Requests: 100 | Restarts: 20, asr_gpt=03%, asr_llama=01%, asr_rules=34%, avg_restart=19
+[69] llama3-8b-q4km_fu(en)(1:51:28.840009), >> Requests: 100 | Restarts: 20, asr_gpt=18%, asr_llama=19%, asr_rules=53%, avg_restart=17
+[64] llama3-8b-q4km_pa(ko)(1:21:35.132873), >> Requests: 100 | Restarts: 20, asr_gpt=60%, asr_llama=47%, asr_rules=79%, avg_restart=10
+[65] llama3-8b-q4km_pr(ko)(1:20:25.466797), >> Requests: 100 | Restarts: 20, asr_gpt=13%, asr_llama=09%, asr_rules=36%, avg_restart=17
+[66] llama3-8b-q4km_fu(ko)(1:41:39.213618), >> Requests: 100 | Restarts: 20, asr_gpt=43%, asr_llama=36%, asr_rules=64%, avg_restart=14
+
+[71] llama3-8b-iq4nl_pa(en)(1:37:19.087646), >> Requests: 100 | Restarts: 20, asr_gpt=43%, asr_llama=44%, asr_rules=69%, avg_restart=13
+[72] llama3-8b-iq4nl_pr(en)(1:39:26.842269), >> Requests: 100 | Restarts: 20, asr_gpt=03%, asr_llama=01%, asr_rules=41%, avg_restart=19
+[73] llama3-8b-iq4nl_fu(en)(1:53:34.927257), >> Requests: 100 | Restarts: 20, asr_gpt=18%, asr_llama=15%, asr_rules=45%, avg_restart=17
+[70] llama3-8b-iq4nl_pa(ko)(0:11:01.668052), >> Requests: 100 | Restarts: 20, asr_gpt=66%, asr_llama=43%, asr_rules=79%, avg_restart=8
+[74] llama3-8b-iq4nl_pr(ko)(1:30:52.137637), >> Requests: 100 | Restarts: 20, asr_gpt=12%, asr_llama=11%, asr_rules=33%, avg_restart=17
+[75] llama3-8b-iq4nl_fu(ko)(1:28:22.524059), >> Requests: 100 | Restarts: 20, asr_gpt=43%, asr_llama=71%, asr_rules=71%, avg_restart=13
+
+[76] llama3-8b-q5km_pa(en)(1:22:34.442033), >> Requests: 100 | Restarts: 20, asr_gpt=45%, asr_llama=71%, asr_rules=71%, avg_restart=12
+[77] llama3-8b-q5km_pr(en)(1:07:09.638258), >> Requests: 100 | Restarts: 20, asr_gpt=4%, asr_llama=31%, asr_rules=31%, avg_restart=19
+[78] llama3-8b-q5km_fu(en)(1:34:29.842672), >> Requests: 100 | Restarts: 20, asr_gpt=20%, asr_llama=54%, asr_rules=54%, avg_restart=16
+[79] llama3-8b-q5km_pa(ko)(1:12:13.651322) >> Requests: 100 | Restarts: 20, asr_gpt=68%, asr_llama=0%, asr_rules=83%, avg_restart=8
+[80] llama3-8b-q5km_pr(ko)(1:06:42.958670) >> Requests: 100 | Restarts: 20, asr_gpt=12%, asr_llama=0%, asr_rules=38%, avg_restart=17
+[81] llama3-8b-q5km_fu(ko)(1:24:36.946358) >> Requests: 100 | Restarts: 20, asr_gpt=50%, asr_llama=0%, asr_rules=69%, avg_restart=12
 
 [41] llama3-8b-q8_pa(en)(1:23:05.303798) >> Requests: 100, Restarts: 20 | asr_gpt=43%, asr_llama=39%, asr_rules=56%, avg_restart=13
 [42] llama3-8b-q8_pr(en)(1:08:17.077221) >> Requests: 100, Restarts: 20 | asr_gpt=02%, asr_llama=00%, asr_rules=12%, avg_restart=19
@@ -29,6 +120,6 @@
 [50] llama3-8b-f16_pa(en)(?:??:??.??????) >> Requests: 100, Restarts: 20 | asr_gpt=48%, asr_llama=40%, asr_rules=61%, avg_restart=11
 [46] llama3-8b-f16_pr(en)(1:30:21.421153) >> Requests: 100, Restarts: 20 | asr_gpt=03%, asr_llama=01%, asr_rules=09%, avg_restart=19
 [47] llama3-8b-f16_fu(en)(2:07:02.094430) >> Requests: 100, Restarts: 20 | asr_gpt=20%, asr_llama=17%, asr_rules=33%, avg_restart=16
-[45] llama3-8b-f16_pa(ko)(1:45:55.254038) >> Requests: 100, Restarts: 20 | asr_gpt=68%, asr_llama=37%, asr_rules=75%, avg_restart=09출처
+[45] llama3-8b-f16_pa(ko)(1:45:55.254038) >> Requests: 100, Restarts: 20 | asr_gpt=68%, asr_llama=37%, asr_rules=75%, avg_restart=09
 [48] llama3-8b-f16_pr(ko)(1:28:58.843781) >> Requests: 100, Restarts: 20 | asr_gpt=13%, asr_llama=06%, asr_rules=21%, avg_restart=17
 [49] llama3-8b-f16_fu(ko)(1:59:41.266941) >> Requests: 100, Restarts: 20 | asr_gpt=41%, asr_llama=21%, asr_rules=47%, avg_restart=13

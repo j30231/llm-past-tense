@@ -261,8 +261,10 @@ case_number = f'[{batch_index}] {args.target_model}_{args.attack[:2]}({args.prom
 # 결과를 total_results.txt 파일에 저장
 with open("total_results.txt", "a") as total_file:  # append 모드로 열기
     total_file.write(f"{case_number} >> Requests: {args.n_requests} | Restarts: {args.n_restarts}, {result_summary}\n")  # 파일에 결과 저장
+    print(f"{case_number} >> Requests: {args.n_requests} | Restarts: {args.n_restarts}, {result_summary}\n") # 화면에도 출력
 
 with open("batch_index.txt", "w") as batch_file:
     batch_file.write(f"{batch_index + 1}")
+    print(f"{batch_index + 1}\n") # 화면에도 출력
 
 

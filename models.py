@@ -110,9 +110,14 @@ class ModelHuggingFace:
 class ModelLMStudio:
     def __init__(self, model_name):
         self.model_dict = {
-            "llama3-8b-iq2": "llama-3-8b-instruct@iq2_xxs",
+            "llama3-8b-iq1s": "llama-3-8b-instruct@iq1_s",
+            "llama3-8b-iq1m": "llama-3-8b-instruct@iq1_m",
+            "llama3-8b-iq2xss": "llama-3-8b-instruct@iq2_xss",
             "llama3-8b-q2": "llama-3-8b-instruct@q2_k",
+            "llama3-8b-q2ks": "llama-3-8b-instruct@q2_k_s",
+            "llama3-8b-iq2s": "llama-3-8b-instruct@iq2_s",
             "llama3-8b-iq2m": "llama-3-8b-instruct@iq2_m",
+            "llama3-8b-iq2xs": "llama-3-8b-instruct@iq2_xs",
             "llama3-8b-q3": "llama-3-8b-instruct@q3_k_l",
             "llama3-8b-q3ks": "llama-3-8b-instruct@q3_k_s",
             "llama3-8b-q4": "llama-3-8b-instruct@q4_0",
@@ -126,9 +131,14 @@ class ModelLMStudio:
         self.model_name = model_name
         self.client = openai.OpenAI(api_key=os.getenv("LMSTUDIO_API_KEY"), base_url="http://localhost:1234/v1")
         self.system_prompts = {
-            "llama3-8b-iq2": "",
+            "llama3-8b-iq1s": "",
+            "llama3-8b-iq1m": "",
+            "llama3-8b-iq2xss": "",
             "llama3-8b-q2": "",
+            "llama3-8b-q2ks": "",
+            "llama3-8b-iq2s": "",
             "llama3-8b-iq2m": "",
+            "llama3-8b-iq2xs": "",
             "llama3-8b-q3ks": "",
             "llama3-8b-q3": "",
             "llama3-8b-q4": "",
