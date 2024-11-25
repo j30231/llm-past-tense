@@ -6,12 +6,14 @@ import pandas as pd
 import json
 import datetime
 import openai
+from groq import Groq
 from dotenv import load_dotenv
 from judges import judge_gpt, judge_llama3, judge_rule_based
 from models import ModelGPT, ModelClaude, ModelHuggingFace, ModelLMStudio
 import models
 import time
 import glob
+import re
 
 def reformulate_past_tense(request):
     if PROMPT_LANGUAGE == "ko":
@@ -123,7 +125,7 @@ MODEL_NAME_TEXT_JUDGE = args.prompt_judge_model
 load_dotenv(override=True)
 client_oai = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 client_together = openai.OpenAI(api_key=os.getenv("TOGETHER_API_KEY"), base_url="https://api.together.xyz/v1")
-client_grok = openai.OpenAI(api_key=os.getenv("GROK_API_KEY"), base_url="https://api.grok.com/v1")
+client_groq = Groq(api_key=os.getenv("GROQ_API_KEY"))
 #client_oai = openai.OpenAI(api_key="no_key", base_url="http://localhost:1234/v1")
 #client_llm = openai.OpenAI(api_key="no_key", base_url="http://localhost:1234/v1")
 
@@ -142,18 +144,37 @@ timestamp_start = datetime.datetime.now()
 
 # 중단된 지점부터 재시작하는 로직
 start_index = 0
-if args.resume:
+if args.resume or args.resume_file:
     if args.resume_file:
         # 특정 파일에서 재시작
         resume_file = args.resume_file
     else:
-        # 가장 최근 파일 찾기
-        jb_files = glob.glob(f'jailbreak_artifacts/({batch_index-1})_*.json')
+        # 파일 패턴 검색 전 현재 디렉토리 출력
+        print(f"Current directory: {os.getcwd()}")
+        search_pattern = f'./jailbreak_artifacts/({batch_index-1})*.json'
+        print(f"Searching for pattern: {search_pattern}")
+        
+        # 모든 매칭되는 파일 출력
+        jb_files = glob.glob(search_pattern)
+        print(f"Found files: {jb_files}")
+        
         if jb_files:
             resume_file = max(jb_files, key=os.path.getctime)
+            print(f"Selected most recent file: {resume_file}")
         else:
-            print("No previous checkpoint found. Starting from beginning.")
-            resume_file = None
+            # 다른 패턴으로도 시도
+            alternative_pattern = f'./jailbreak_artifacts/*.json'
+            jb_files = glob.glob(alternative_pattern)
+            print(f"Trying alternative pattern: {alternative_pattern}")
+            print(f"Found files with alternative pattern: {jb_files}")
+            
+            if jb_files:
+                # 파일명에서 batch 번호 추출하여 가장 최근 것 선택
+                resume_file = max(jb_files, key=lambda x: int(re.search(r'\((\d+)\)', x).group(1)) if re.search(r'\((\d+)\)', x) else -1)
+                print(f"Selected file: {resume_file}")
+            else:
+                print("No previous checkpoint found. Starting from beginning.")
+                resume_file = None
     
     if resume_file:
         with open(resume_file, 'r', encoding='utf-8') as f:
@@ -161,7 +182,11 @@ if args.resume:
             if previous_data["jb_artifacts"]:
                 start_index = previous_data["jb_artifacts"][-1]["i_request"] + 1
                 jb_dict["jb_artifacts"] = previous_data["jb_artifacts"]
-                print(f"Resuming from request #{start_index}")
+                # batch_index를 이전 실험과 동일하게 유지
+                with open("batch_index.txt", "w") as batch_file:
+                    batch_file.write(str(batch_index-1))
+                batch_index = batch_index - 1  # batch_index 수정
+                print(f"Resuming from request #{start_index} (batch {batch_index})")
 
 print('=='*50 + '\n' + '=='*50 + '\n' + '=='*50 + '\n')
 print(f'\n[batch : {batch_index}] {timestamp_start}-model={args.target_model}-attack={args.attack}-n_requests={args.n_requests}-n_restarts={args.n_restarts}-lang={args.prompt_language}')
@@ -186,8 +211,11 @@ for i_request, request in enumerate(requests[start_index:args.n_requests], start
         # 모든 판단기를 동시에 체크
         if not jailbroken_gpt:
             jailbroken_gpt = judge_gpt(client_oai, request, response)
-        if not jailbroken_llama:
-            jailbroken_llama = judge_llama3(client_together, request, response)
+
+        # llama 판단은 보류(API 비용 문제)
+        # if not jailbroken_llama:
+        #     jailbroken_llama = judge_llama3(client_groq, request, response)
+
         if not jailbroken_rules:
             jailbroken_rules = judge_rule_based(response)
 
@@ -232,7 +260,7 @@ case_number = f'[{batch_index}] {args.target_model}_{args.attack[:2]}({args.prom
 
 # 결과를 total_results.txt 파일에 저장
 with open("total_results.txt", "a") as total_file:  # append 모드로 열기
-    total_file.write(f"{case_number}, >> Requests: {args.n_requests} | Restarts: {args.n_restarts}, {result_summary}\n")  # 파일에 결과 저장
+    total_file.write(f"{case_number} >> Requests: {args.n_requests} | Restarts: {args.n_restarts}, {result_summary}\n")  # 파일에 결과 저장
 
 with open("batch_index.txt", "w") as batch_file:
     batch_file.write(f"{batch_index + 1}")

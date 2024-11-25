@@ -6,7 +6,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 # 모델들 설정
 MODEL_NAME_TEXT_GEN = "gpt-4o-mini" # 문장 생성 LLM 모델 이름 (원본 : gpt-3.5-turbo)
 MODEL_NAME_GPT_JUDGE = "gpt-4o-mini" # 문장 생성 LLM 평가 모델 이름 (원본 : gpt-4-0613)
-MODEL_NAME_LLAMA_JUDGE = "meta-llama/Llama-3-70b-chat-hf" # 라마 평가 모델 이름 (원본 : meta-llama/Llama-3-70b-chat-hf)
+MODEL_NAME_LLAMA_JUDGE = "llama3-70b-8192" # 라마 평가 모델 이름 (원본 : meta-llama/Llama-3-70b-chat-hf)
 MODEL_NAME_TARGET = "gpt-4o-mini" # 목표 모델 이름 (원본 : 논문에선 Llama-3 8B, Claude-3.5 Sonnet, GPT-4o 등등)
 
 class ModelGPT:
@@ -112,10 +112,13 @@ class ModelLMStudio:
         self.model_dict = {
             "llama3-8b-iq2": "llama-3-8b-instruct@iq2_xxs",
             "llama3-8b-q2": "llama-3-8b-instruct@q2_k",
+            "llama3-8b-iq2m": "llama-3-8b-instruct@iq2_m",
             "llama3-8b-q3": "llama-3-8b-instruct@q3_k_l",
+            "llama3-8b-q3ks": "llama-3-8b-instruct@q3_k_s",
             "llama3-8b-q4": "llama-3-8b-instruct@q4_0",
             "llama3-8b-iq4nl": "llama-3-8b-instruct@iq4_nl",
             "llama3-8b-q4km": "llama-3-8b-instruct@q4_k_m",
+            "llama3-8b-q5km": "llama-3-8b-instruct@q5_k_m",
             "llama3-8b-q8": "llama-3-8b-instruct@q8_0",
             "llama3-8b-q16": "llama-3-8b-instruct-q16_0",
             "llama3-8b-f16": "llama-3-8b-instruct@?",
@@ -125,10 +128,13 @@ class ModelLMStudio:
         self.system_prompts = {
             "llama3-8b-iq2": "",
             "llama3-8b-q2": "",
+            "llama3-8b-iq2m": "",
+            "llama3-8b-q3ks": "",
             "llama3-8b-q3": "",
             "llama3-8b-q4": "",
             "llama3-8b-iq4nl": "",
             "llama3-8b-q4km": "",
+            "llama3-8b-q5km": "",
             "llama3-8b-q8": "",
             "llama3-8b-q16": "",
             "llama3-8b-f16": "",

@@ -1,7 +1,13 @@
 {
     "version": "0.2.0",
     "configurations": [
-
+        {
+            "name": "Python Debugger: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
         {
             "name": "Python: Current File",
             "type": "debugpy",
@@ -9,8 +15,8 @@
             "program": "${file}",
             "args": [
                 "--target_model=llama3-8b-iq4nl",
-                "--n_requests=1",
-                "--n_restarts=1",
+                "--n_requests=100",
+                "--n_restarts=20",
                 "--attack",
                 "past",
                 "--prompt_language",
@@ -19,10 +25,13 @@
                 "gpt-4o-mini",
                 "--prompt_judge_model",
                 "gpt-4o-mini",
+                "--resume",
             ],
             "console": "integratedTerminal",
             "justMyCode": True,
-            "pythonArgs": ["-u"]
+            "pythonArgs": [
+                "-u"
+            ]
         }
     ]
-} 
+}
